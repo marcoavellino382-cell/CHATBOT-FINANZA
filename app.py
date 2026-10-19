@@ -11,8 +11,7 @@ st.caption("Dati e metriche di mercato in tempo reale estratti da Yahoo Finance"
 # ==========================================
 with st.sidebar:
     st.markdown("## 👨‍💻 Developer Info")
-    st.markdown("**Sviluppatore:** Marco Avellino")
-    
+    st.markdown("**Sviluppatore:** [Marco Avellino](https://linkedin.com/in/marco-avellino-1a0918411)")    
     st.markdown("---")
     st.markdown("### 📊 Dettagli Software")
     st.write("- **Versione App:** v1.1.0")

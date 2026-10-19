@@ -54,13 +54,12 @@ if user_input := st.chat_input("Scrivi qui il ticker dell'azienda..."):
         found_data = False
         words = user_input.upper().split()
         
-        for word in words:
-            # Rimuove la punteggiatura per isolare il ticker
-            clean_word = "".join(filter(str.isalnum, word))
-            if len(clean_word) <= 5 and clean_word.isalpha():
-                
-                with st.spinner(f"Estrazione dati per {clean_word}..."):
-                    data = get_stock_info(clean_word)
+               for word in words:
+            # Pulisce la parola mantenendo solo lettere, numeri, punti e trattini
+            clean_word = "".join([c for c in word if c.isalnum() or c in ".-"])
+            
+            # Un ticker valido ora può contenere punti/trattini ed essere lungo fino a 10 caratteri
+            if 1 <= len(clean_word) <= 10:
                 
                 if "Errore" not in data:
                     st.success(f"Ecco i dati finanziari aggiornati per {clean_word}:")

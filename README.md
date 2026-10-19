@@ -18,19 +18,7 @@ Un chatbot intelligente per l'analisi finanziaria sviluppato in **Python** e **S
 - **Dati Finanziari:** Yahoo Finance API (`yfinance`)
 - **Modello AI:** OpenAI API (`gpt-4o-mini`)
 
----
-
-
-## 🌐 Deploy su Streamlit Community Cloud
-L'applicazione è pronta per il deploy immediato su Streamlit Cloud:
-1. Connetti il tuo account GitHub a Streamlit Cloud.
-2. Seleziona questa repository e il file principale `app.py`.
-3. Nei **Secrets** dell'app su Streamlit, inserisci la tua chiave API in questo formato:
-   ```toml
-   OPENAI_API_KEY = "la_tua_chiave_segreta_qui"
-   ```
-
----
+--
 
 ## ⚠️ Disclaimer Finanziario
 Questo software è sviluppato esclusivamente a scopo didattico e informativo. Non costituisce in alcun modo un servizio di consulenza finanziaria né un invito o una raccomandazione al pubblico risparmio o all'investimento.

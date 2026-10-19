@@ -13,9 +13,11 @@ with st.sidebar:
     st.markdown("## 👨‍💻 Developer Info")
     st.markdown("**Sviluppatore:** Marco Avellino")
     
-    # Sostituisci i link qui sotto con i tuoi veri profili
-    st.markdown("[🔗 Il mio profilo LinkedIn](https://linkedin.com/in/marco-avellino-1a0918411")
-    st.markdown("[📂 Repository GitHub del Progetto](https://github.com)")
+       st.markdown("---")
+    st.markdown("### 📊 Dettagli Software")
+    st.write("- **Versione App:** v1.1.0")
+    st.write("- **Licenza:** MIT License")
+    st.write("- **Status:** Online & Funzionante")
     
     st.markdown("---")
     st.markdown("### 🤖 Info sul Bot")

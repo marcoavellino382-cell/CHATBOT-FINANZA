@@ -14,7 +14,7 @@ with st.sidebar:
     st.markdown("**Sviluppatore:** Marco Avellino")
     
     # Sostituisci i link qui sotto con i tuoi veri profili
-    st.markdown("[🔗 Il mio profilo LinkedIn](https://linkedin.com/in/marco-avellino-1a0918411")
+    st.markdown("🔗 Il mio profilo LinkedIn(https://linkedin.com/in/marco-avellino-1a0918411")
     st.markdown("[📂 Repository GitHub del Progetto](https://github.com)")
     
     st.markdown("---")

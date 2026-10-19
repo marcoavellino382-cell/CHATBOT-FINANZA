@@ -16,7 +16,7 @@ Un chatbot intelligente per l'analisi finanziaria sviluppato in **Python** e **S
 - **Linguaggio:** Python 3.10+
 - **Interfaccia Utente:** Streamlit
 - **Dati Finanziari:** Yahoo Finance API (`yfinance`)
-- **Modello AI:** OpenAI API (`gpt-4o-mini`)
+
 
 --
 

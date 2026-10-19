@@ -13,7 +13,7 @@ with st.sidebar:
     st.markdown("## 👨‍💻 Developer Info")
     st.markdown("**Sviluppatore:** Marco Avellino")
     
-       st.markdown("---")
+    st.markdown("---")
     st.markdown("### 📊 Dettagli Software")
     st.write("- **Versione App:** v1.1.0")
     st.write("- **Licenza:** MIT License")

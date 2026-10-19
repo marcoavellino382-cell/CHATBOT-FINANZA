@@ -55,24 +55,32 @@ if user_input := st.chat_input("Scrivi qui il ticker dell'azienda..."):
         found_data = False
         words = user_input.upper().split()
         
-        for word in words:
-            # Pulisce la parola mantenendo solo lettere, numeri, punti e trattini
-            clean_word = "".join([c for c in word if c.isalnum() or c in ".-"])
-            
-            # Un ticker valido ora può contenere punti/trattini ed essere lungo fino a 10 caratteri
+        # Se l'utente scrive una sola parola (es. "MSFT"), la consideriamo direttamente il ticker
+        if len(words) == 1:
+            ticker_to_check = "".join([c for c in words[0] if c.isalnum() or c in ".-"])
+            tickers = [ticker_to_check]
+        else:
+            # Se scrive una frase, analizziamo le singole parole escludendo quelle di comando comuni
+            comandi_comuni = ["ANALIZZAMI", "CERCA", "CONTROLLA", "MOSTRA", "TROVA"]
+            tickers = ["".join([c for c in w if c.isalnum() or c in ".-"]) for w in words if w not in comandi_comuni]
+
+        for clean_word in tickers:
             if 1 <= len(clean_word) <= 10:
-                
                 with st.spinner(f"Estrazione dati per {clean_word}..."):
                     data = get_stock_info(clean_word)
                 
-                if "Errore" not in data:
-                    st.success(f"Ecco i dati finanziari aggiornati per {clean_word}:")
-                    st.json(data) # Mostra la tabella con i dati reali
-                    st.session_state.messages.append({"role": "assistant", "content": data})
-                    found_data = True
-                    break
+                # Se Yahoo Finance risponde con un errore o non trova il nome aziendale, passa oltre
+                if "Errore" in data or data.get("Nome") == clean_word or data.get("Prezzo Attuale") == "$N/D":
+                    continue
+                
+                # Mostra la tabella se il titolo è valido
+                st.success(f"Ecco i dati finanziari aggiornati per {clean_word}:")
+                st.json(data)
+                st.session_state.messages.append({"role": "assistant", "content": data})
+                found_data = True
+                break
         
         if not found_data:
-            errore_msg = "Non sono riuscito a trovare un ticker azionario valido nella tua richiesta. Riprova indicando un simbolo (es. AAPL, RACE.MI)."
+            errore_msg = "Non sono riuscito a trovare un ticker azionario valido. Riprova inserendo solo il simbolo (es. MSFT, AAPL, ENI.MI)."
             st.warning(errore_msg)
             st.session_state.messages.append({"role": "assistant", "content": errore_msg})

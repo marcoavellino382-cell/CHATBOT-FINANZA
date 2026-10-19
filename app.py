@@ -6,6 +6,28 @@ st.set_page_config(page_title="Financial Data Dashboard", page_icon="📈", layo
 st.title("📈 Financial Data Assistant")
 st.caption("Dati e metriche di mercato in tempo reale estratti da Yahoo Finance")
 
+# ==========================================
+#  BARRA LATERALE: INFORMAZIONI SVILUPPATORE
+# ==========================================
+with st.sidebar:
+    st.markdown("## 👨‍💻 Developer Info")
+    st.markdown("**Sviluppatore:** Il Tuo Nome/Cognome")
+    
+    # Sostituisci i link qui sotto con i tuoi veri profili
+    st.markdown("[🔗 Il mio profilo LinkedIn](https://linkedin.com)")
+    st.markdown("[📂 Repository GitHub del Progetto](https://github.com)")
+    
+    st.markdown("---")
+    st.markdown("### 🤖 Info sul Bot")
+    st.markdown(
+        "Questo assistente estrae dati grezzi direttamente dai mercati finanziari. "
+        "Le risposte vengono mostrate in formato **JSON**, garantendo la massima trasparenza, "
+        "leggibilità informatica e assenza di allucinazioni da intelligenza artificiale."
+    )
+    st.markdown("---")
+    st.markdown("### 💡 Ticker di Esempio:")
+    st.markdown("- **TSLA** (Tesla)\n- **AAPL** (Apple)\n- **NVDA** (NVIDIA)\n- **MSFT** (Microsoft)")
+
 # Inizializzazione della cronologia dei messaggi nella chat
 if "messages" not in st.session_state:
     st.session_state.messages = [

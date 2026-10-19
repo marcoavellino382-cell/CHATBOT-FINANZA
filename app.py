@@ -9,7 +9,7 @@ st.set_page_config(page_title="Financial Data Dashboard", page_icon="📈", layo
 # ==========================================
 with st.sidebar:
     st.title("👨‍💻 Developer Info")
-    st.write("**Sviluppatore:** [Marco Avellino](https://linkedin.com)")
+    st.write("**Sviluppatore:** [Marco Avellino](https://linkedin.com/in/marco-avellino-1a0918411")
     
     
     st.markdown("---")

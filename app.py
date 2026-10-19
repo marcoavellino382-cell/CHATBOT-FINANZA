@@ -54,7 +54,7 @@ if user_input := st.chat_input("Scrivi qui il ticker dell'azienda..."):
         found_data = False
         words = user_input.upper().split()
         
-               for word in words:
+            for word in words:
             # Pulisce la parola mantenendo solo lettere, numeri, punti e trattini
             clean_word = "".join([c for c in word if c.isalnum() or c in ".-"])
             

@@ -11,10 +11,10 @@ st.caption("Dati e metriche di mercato in tempo reale estratti da Yahoo Finance"
 # ==========================================
 with st.sidebar:
     st.markdown("## 👨‍💻 Developer Info")
-    st.markdown("**Sviluppatore:** Il Tuo Nome/Cognome")
+    st.markdown("**Sviluppatore:** Marco Avellino")
     
     # Sostituisci i link qui sotto con i tuoi veri profili
-    st.markdown("[🔗 Il mio profilo LinkedIn](https://linkedin.com)")
+    st.markdown("[🔗 Il mio profilo LinkedIn](https://linkedin.com/in/marco-avellino-1a0918411")
     st.markdown("[📂 Repository GitHub del Progetto](https://github.com)")
     
     st.markdown("---")

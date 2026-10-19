@@ -3,36 +3,37 @@ from finance_agent import get_stock_info
 
 # Configurazione pagina Streamlit
 st.set_page_config(page_title="Financial Data Dashboard", page_icon="📈", layout="centered")
-st.title("📈 Financial Data Assistant")
-st.caption("Dati e metriche di mercato in tempo reale estratti da Yahoo Finance")
 
 # ==========================================
 #  BARRA LATERALE: INFORMAZIONI SVILUPPATORE
 # ==========================================
 with st.sidebar:
-    st.markdown("## 👨‍💻 Developer Info")
-    st.markdown("**Sviluppatore:** [Marco Avellino](https://linkedin.com/in/marco-avellino-1a0918411)")    
-    st.markdown("---")
-    st.markdown("### 📊 Dettagli Software")
-    st.write("- **Versione App:** v1.1.0")
-    st.write("- **Licenza:** MIT License")
-    st.write("- **Status:** Online & Funzionante")
+    st.title("👨‍💻 Developer Info")
+    st.write("**Sviluppatore:** [Marco Avellino](https://linkedin.com)")
+    
+    st.markdown("[📂 Repository GitHub del Progetto](https://github.com)")
     
     st.markdown("---")
     st.markdown("### 🤖 Info sul Bot")
-    st.markdown(
+    st.write(
         "Questo assistente estrae dati grezzi direttamente dai mercati finanziari. "
-        "Le risposte vengono mostrate in formato **JSON**, garantendo la massima trasparenza, "
+        "Le risposte vengono mostrate in formato JSON, garantendo la massima trasparenza, "
         "leggibilità informatica e assenza di allucinazioni da intelligenza artificiale."
     )
     st.markdown("---")
     st.markdown("### 💡 Ticker di Esempio:")
-    st.markdown("- **TSLA** (Tesla)\n- **AAPL** (Apple)\n- **NVDA** (NVIDIA)\n- **MSFT** (Microsoft)")
+    st.write("- **TSLA** (Tesla)\n- **RACE.MI** (Ferrari)\n- **BTC-USD** (Bitcoin)\n- **AAPL** (Apple)")
+
+# ==========================================
+#          CORPO PRINCIPALE DELL'APP
+# ==========================================
+st.title("📈 Financial Data Assistant")
+st.caption("Dati e metriche di mercato in tempo reale estratti da Yahoo Finance")
 
 # Inizializzazione della cronologia dei messaggi nella chat
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Ciao! Scrivi il nome di un'azione o il suo ticker (es. 'AAPL', 'NVDA', 'TSLA') per vedere le sue metriche finanziarie aggiornate."}
+        {"role": "assistant", "content": "Ciao! Scrivi il nome di un'azione o il suo ticker (es. 'AAPL', 'RACE.MI', 'BTC-USD') per vedere le sue metriche finanziarie."}
     ]
 
 # Mostra i messaggi precedenti
@@ -61,6 +62,9 @@ if user_input := st.chat_input("Scrivi qui il ticker dell'azienda..."):
             # Un ticker valido ora può contenere punti/trattini ed essere lungo fino a 10 caratteri
             if 1 <= len(clean_word) <= 10:
                 
+                with st.spinner(f"Estrazione dati per {clean_word}..."):
+                    data = get_stock_info(clean_word)
+                
                 if "Errore" not in data:
                     st.success(f"Ecco i dati finanziari aggiornati per {clean_word}:")
                     st.json(data) # Mostra la tabella con i dati reali
@@ -69,6 +73,6 @@ if user_input := st.chat_input("Scrivi qui il ticker dell'azienda..."):
                     break
         
         if not found_data:
-            errore_msg = "Non sono riuscito a trovare un ticker azionario valido nella tua richiesta. Riprova indicando un simbolo (es. AAPL)."
+            errore_msg = "Non sono riuscito a trovare un ticker azionario valido nella tua richiesta. Riprova indicando un simbolo (es. AAPL, RACE.MI)."
             st.warning(errore_msg)
             st.session_state.messages.append({"role": "assistant", "content": errore_msg})

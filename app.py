@@ -11,7 +11,6 @@ with st.sidebar:
     st.title("👨‍💻 Developer Info")
     st.write("**Sviluppatore:** [Marco Avellino](https://linkedin.com)")
     
-    st.markdown("[📂 Repository GitHub del Progetto](https://github.com)")
     
     st.markdown("---")
     st.markdown("### 🤖 Info sul Bot")
